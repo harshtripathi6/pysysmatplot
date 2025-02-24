@@ -1,0 +1,5 @@
+streamlit
+numpy
+matplotlib
+pyyaml
+h5py
