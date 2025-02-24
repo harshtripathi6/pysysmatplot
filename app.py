@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(page_title="SPECT Visualization", layout="wide")
+st.set_page_config(page_title="PPDF Visualization", layout="wide")
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -53,7 +53,7 @@ def get_geom_center_xy(geom: np.ndarray) -> np.ndarray:
     return (geom[:4:2] + geom[1:4:2]) * 0.5
 
 # Streamlit UI
-st.title("Detector Probability Density Visualization")
+st.title("PPDF Visualization")
 
 # File upload in sidebar
 with st.sidebar:
