@@ -117,7 +117,7 @@ if yaml_file and hdf5_file:
                     geom_center = get_geom_center_xy(det_geoms[detector_id])
                     geom_center_xy = transform_verts([geom_center], trans_list[0])
                     
-                    aperture_y = (plate_geoms[:-1, 3] + plate_geoms[1:, 2]) * 0.5 + trans_t -0.5
+                    aperture_y = (plate_geoms[:-1, 3] + plate_geoms[1:, 2]) * 0.5 + trans_t
                     aperture_centers = np.stack(
                         (np.full(aperture_y.shape[0], trans_r+0.5), aperture_y)
                     ).T
