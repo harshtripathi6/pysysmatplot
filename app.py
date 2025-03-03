@@ -90,7 +90,7 @@ if yaml_file and hdf5_file:
                     
                     trans_r = config["relation"]["radial shift"]["data"][0]
                     trans_list = [{
-                        "angle": config["relation"]["rotation"]["data"][0],
+                        "angle": 0, #config["relation"]["rotation"]["data"][0],
                         "trans_r": trans_r,
                         "trans_t": trans_t
                     }]
