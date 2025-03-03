@@ -119,7 +119,7 @@ if yaml_file and hdf5_file:
                     
                     aperture_y = (plate_geoms[:-1, 3] + plate_geoms[1:, 2]) * 0.5 + trans_t
                     aperture_centers = np.stack(
-                        (np.full(aperture_y.shape[0], trans_r + 0.5), aperture_y)
+                        (np.full(aperture_y.shape[0], trans_r), aperture_y)
                     ).T
 
                     if show_apertures:
