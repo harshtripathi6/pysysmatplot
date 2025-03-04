@@ -186,4 +186,4 @@ relation:
     data: [0]
   rotation:
     format: list
-    data: [1,61,121,181,241,301]
+    data: [0]
