@@ -117,13 +117,18 @@ if yaml_file and hdf5_file:
                     geom_center = get_geom_center_xy(det_geoms[detector_id])
                     geom_center_xy = transform_verts([geom_center], trans_list[0])
                     
-                    aperture_y = (plate_geoms[:-1, 3] + plate_geoms[1:, 2]) * 0.5 + trans_t
+                    aperture_y = (plate_geoms[:-1, 3] + plate_geoms[1:, 2]) * 0.5 
                     aperture_centers = np.stack(
-                        (np.full(aperture_y.shape[0], trans_r+0.5), aperture_y)
+                        (np.full(aperture_y.shape[0], trans_r + 0.5), aperture_y)
                     ).T
+                    aperture_centers_transformed = transform_verts(aperture_centers, {
+                        "angle": config["relation"]["rotation"]["data"][0],
+                        "trans_r": 0,  
+                        "trans_t": trans_t,
+                    })
 
                     if show_apertures:
-                        ax.plot(aperture_centers[:, 0], aperture_centers[:, 1], 
+                        ax.plot(aperture_centers_transformed[:, 0], aperture_centers_transformed[:, 1], 
                                 "o", ms=1, color='blue', zorder=4)
                         
                         clipbox = patches.Rectangle(
@@ -134,7 +139,7 @@ if yaml_file and hdf5_file:
                             visible=False
                         )
                         
-                        for pA in aperture_centers:
+                        for pA in aperture_centers_transformed:
                             line = ax.axline(geom_center_xy[0], pA, ls="--", lw=0.5,
                                            color='gray', alpha=line_alpha, zorder=3)
                             line.set_clip_path(clipbox)
