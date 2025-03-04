@@ -81,7 +81,7 @@ if yaml_file and hdf5_file:
             if st.button("Generate Visualization"):
                 with st.spinner("Creating visualization..."):
                     fov_dims = np.array(config["FOV"]["N voxels xyz"]) * np.array(config["FOV"]["mm per voxel xyz"])
-                    trans_t = -(np.max(geoms[:, 3]) + np.min(geoms[:, 2])) / 2
+                    trans_t = -(np.max(geoms[:, 3]) - np.min(geoms[:, 2])) / 2
                     det_dims = np.array([
                         np.max(geoms[:, 1]) - np.min(geoms[:, 0]),
                         np.max(geoms[:, 3]) - np.min(geoms[:, 2]),
